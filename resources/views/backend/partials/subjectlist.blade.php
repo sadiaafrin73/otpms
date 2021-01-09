@@ -19,8 +19,8 @@
             <tr>
                 <th scope="row">{{$data->id}}</th>
                 <td>{{$data->name}}</td>
-                <td>{{$data->group}}</td>
-                <td>{{$data->class}}</td>
+                <td>{{$data->group->group}}</td>
+                <td>{{$data->classnumber->class}}</td>
                 <td>
                     <a class="btn btn-warning" href="{{route('subject.edit',$data->id)}}">Edit</a>
                     <a class="btn btn-danger" href="{{route('subject.delete',$data->id)}}">Delete</a>

@@ -25,7 +25,8 @@ class UserController extends Controller
             if (Auth::attempt($login_info)) {
                 $request->session()->regenerate();
                 return redirect()->intended('home');
-            }else
+            }
+            else
             {
                 return redirect()->back()->withErrors('Invalid Credentials');
             }
@@ -35,7 +36,7 @@ class UserController extends Controller
     {
         //logout here
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('dashboard');
 
 
     }

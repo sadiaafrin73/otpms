@@ -2,6 +2,15 @@
 @section('main')
     
      <h1>Add New Subject</h1>
+     @if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
 
      <form action="{{route('subject.addsubject')}}" method="post"> 
      @csrf
@@ -13,15 +22,23 @@
 
        
         <div class="form-group">
-            <label for="group">Group</label>
-            <input name="group" placeholder="Enter group name" type="text" class="form-control" id="group">
-        </div>
-
-        <div class="form-group">
-            <label for="class">Class</label>
-            <input name="class" placeholder="Enter Class " type="text" class="form-control" id="class">
-        </div>
-
+    <label for="group">Group</label>
+    <select name="group" class="form-control">
+    <option disabled="" selected=""></option>
+    @foreach($gr as $row)
+    <option value="{{$row->id}}">{{$row->group}}</option>
+    @endforeach
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="class">Class</label>
+    <select name="class" class="form-control">
+    <option disabled="" selected=""></option>
+    @foreach($cl as $row)
+    <option value="{{$row->id}}">{{$row->class}}</option>
+    @endforeach
+    </select>
+  </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

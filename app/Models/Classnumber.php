@@ -5,16 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tutor extends Model
+class Classnumber extends Model
 {
-    // protected $table='tutors';
+    protected $table='classnumbers';
 
     protected $guarded =[];
     use HasFactory;
-
-    
- public function user()
- {
-     return $this->belongsTo(User::class);
- } 
 }

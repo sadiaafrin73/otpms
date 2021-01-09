@@ -58,6 +58,8 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{route('dashboard.subject.addsubject')}}">Add Subject</a>
+            <a class="collapse-item" href="{{route('dashboard.group')}}">Add Group</a>
+            <a class="collapse-item" href="{{route('dashboard.class')}}">Add Class</a>
             <a class="collapse-item" href="{{route('dashboard.subject.subjectlist')}}"> Subject List</a>
         </div>
     </div>
@@ -71,14 +73,26 @@
     Addons
 </div>
 
-
-
 <!-- Nav Item - Tution -->
 <li class="nav-item">
-    <a class="nav-link" href="{{route('dashboard.tution')}}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tution Info</span></a>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetution"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Tution</span>
+    </a>
+    <div id="collapsetution" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('dashboard.tution_post_request')}}">Tution Post Request </a>
+        
+            <a class="collapse-item" href="#">Tution List</a>
+           
+        </div>
+    </div>
 </li>
+
+
+
 <!-- Nav Item - Schedule -->
 <li class="nav-item">
     <a class="nav-link" href="tables.html">
@@ -100,17 +114,5 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
-
-<!-- Sidebar Toggler (Sidebar) -->
-<div class="text-center d-none d-md-inline">
-    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-</div>
-
-<!-- Sidebar Message -->
-<div class="sidebar-card">
-    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="">
-    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-    <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-</div>
-
+,
 </ul>

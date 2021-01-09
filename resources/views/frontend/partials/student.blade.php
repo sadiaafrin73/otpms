@@ -296,7 +296,7 @@
         </div>
 
         <!-- Login Form -->
-        <form action="{{route('tutor.submit')}}" method="POST" role="form">
+        <form action="{{route('student.submit')}}" method="POST" role="form">
         @csrf
             <input required name="email" type="email" id="login" class="fadeIn second" name="email" placeholder="Enter Email">
             <input required name="password" type="password" id="password" class="fadeIn third" name="password" placeholder="Enter Password">

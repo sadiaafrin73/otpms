@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - dashboard</title>
+    <title>Admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('/backend/assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -30,6 +30,7 @@
         <!-- Sidebar -->
         @include('backend.partials.sidebar')
         <!-- End of Sidebar -->
+
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

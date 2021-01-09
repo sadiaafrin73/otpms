@@ -1,8 +1,47 @@
 @extends('frontend.master')
+
 @section('main')
 
 <main id="main">
+@auth
+@if(auth()->user()->role=='student')
+<section  id="services-sec">
+    <div class="container">
+    <div class="row go-marg" id="tution-section">
+                @foreach($tution as $key=>$data)
+                <div class="col-md-4 col-sm-4">
+                    <div class="panel panel-default">
+                    
+                        <div class="panel-body">
+                            <h4 class="adjst"> Tution post {{$key+1}}</h4>
+                            <p>
+                            <p>{{$data->subjectname->name}}</p>
+                            <p>{{$data->groupname->group}}</p>
+                            <p>{{optional($data->hasclass)->class}}</p>
+                           
+                            <a class="btn btn-info" href="{{route('tution.post.details',$data->id)}}">Details</a>
+                            
+                            </p>
+                            
+                            
+                        </div>
+                    </div> 
+                            
+                </div>
+                @endforeach
+                            
+            </div>
+        </div>
+                </hr>
+            
+                    
+        </div>
+    </div>
+</section>
+@endif
+@endauth
 
+@guest
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -35,8 +74,9 @@
         </div>
 
       </div>
-    </section><!-- End About Us Section -->
-
+    </section>
+    <!-- End About Us Section -->
+   
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
@@ -564,7 +604,7 @@
     </section><!-- End Contact Section -->
 
   </main>
-
+@endguest
 
 
 

@@ -37,15 +37,26 @@
 
 <body>
 
+
   <!-- ======= Header ======= -->
   @include('frontend.partials.header')
  <!-- End Header -->
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xl-8">
+        @if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
           <h1>Online Tution Platform</h1>
           <h2>Education is one thing no one can take away from you</h2>
           
@@ -53,6 +64,7 @@
       </div>
     </div>
   </section><!-- End Hero -->
+ 
 
   @yield('main')
   <!-- End #main -->
@@ -60,6 +72,7 @@
   <!-- ======= Footer ======= -->
   @include('frontend.partials.footer')
  <!-- End Footer -->
+ 
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>

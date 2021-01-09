@@ -8,6 +8,7 @@
           <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
           <nav class="nav-menu d-none d-lg-block">
+          @guest
             <ul>
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -20,7 +21,7 @@
                  <li><a href="{{route('dashboard.admin')}}">Admin</a></li>
                   <li><a href="{{route('tutor.login')}}">Tutor</a></li>
                   
-                  <li><a href="#">Student</a></li>
+                  <li><a href="{{route('student.login')}}">Student</a></li>
                   
                   
                 </ul>
@@ -28,11 +29,201 @@
           
 
             </ul>
+            @endguest
           </nav><!-- .nav-menu -->
+          <form class="form-inline my-2 my-lg-0">
 
-          <a href="#about" class="get-started-btn scrollto">Log out</a>
+          <form class="form-inline my-2 my-lg-0">
+          @guest
+      
+          <button style="background-color: #009961 !important;border-color: #007bff !important;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+           Registration
+          </button>
+        @endguest
+        @auth
+        @if(auth()->user()->role=='tutor')
+            
+            
+            
+            <button type="button" class="btn btn-primary" style="margin-right:5px">My profile</button>
+            
+            <a class="btn btn-primary" href="{{route('tution.post')}}" style="margin-right:5px">Tution Post</a>
+            
+            <a class="btn btn-primary" href="{{route('tution.list')}}" style="margin-right:5px">Tution List</a>
+            <button type="button" class="btn btn-primary" style="margin-right:5px>tution post</button>
+
+
+<img style="    width: 70px; border-radius: 50px; padding: 10px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="user image">
+            <a href="{{route('logout')}}" class="btn btn-primary">
+                Logout
+            </a>
+
+                @endif
+                @endauth
+
+                @auth
+        @if(auth()->user()->role=='student')
+            
+        <button type="button" class="btn btn-primary" style="margin-right:5px">Tutor list</button>
+            <button type="button" class="btn btn-primary" style="margin-right:5px">Create Tution</button>
+            <a class="btn btn-primary" href="#tution-section" style="margin-right:5px">Tution Post</a>
+
+     <img style="    width: 70px; border-radius: 50px; padding: 10px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="user image">
+            <a href="{{route('logout')}}" class="btn btn-primary">
+                Logout
+            </a>
+
+                @endif
+                @endauth
+
+
+               
+</form>
+         
+          
         </div>
       </div>
 
     </div>
   </header>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tutor</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Student</a>
+  </li>
+  
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade  active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+  <form method="post" action="{{route('tutor.registration')}}"enctype="multipart/form-data">
+    @csrf
+     
+     
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Enter name" required>
+         </div>
+
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input name="address" type="text" class="form-control" id="address" placeholder="Enter Address" required>
+         </div>
+
+         <div class="form-group">
+            <label for="mobile_number">Mobile number:</label>
+            <input name="mobile_number" type="text" class="form-control" id="mobile_number" placeholder="Enter Mobile Number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Gender:</label>
+            <input name="gender" type="text" class="form-control" id="gender" placeholder="Enter Gender" required>
+         </div>
+
+         <div class="form-group">
+            <label for="educational_qualification">Educational Qualification:</label>
+            <input name="educational_qualification" type="text" class="form-control" id="educational_qualification" placeholder="Enter educational qualification" required>
+         </div>
+
+         <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input name="experience" type="text" class="form-control" id="experience" placeholder="Enter your working experience">
+         </div>
+
+        <div class="form-group">
+            <label for="file">Upload User Image:</label>
+            <input name="image" type="file" class="form-control" id="file" required>
+        </div>
+
+        <div class="form-group">
+
+           <button type="submit" class="btn btn-success">Register</button>
+         </div>
+  </form>
+  
+  
+  
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  
+  <form method="post" action="{{route('student.registration')}}"enctype="multipart/form-data">
+    @csrf
+     
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Enter name" required>
+         </div>
+
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Address:</label>
+            <input name="address" type="text" class="form-control" id="name" placeholder="Enter Address" required>
+         </div>
+
+         <div class="form-group">
+            <label for="mobile_number">Mobile number:</label>
+            <input name="mobile_number" type="text" class="form-control" id="mobile_number" placeholder="Enter Mobile Number" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input name="gender" type="text" class="form-control" id="gender" placeholder="Enter Gender" required>
+         </div>
+
+        <div class="form-group">
+            <label for="file">Upload User Image:</label>
+            <input name="image" type="file" class="form-control" id="file" required>
+        </div>
+
+        <div class="form-group">
+
+           <button type="submit" class="btn btn-success">Register</button>
+         </div>
+  </form>
+  
+  
+  </div>
+  
+</div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+  
