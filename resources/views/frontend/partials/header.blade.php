@@ -45,11 +45,11 @@
             
             
             
-            <button type="button" class="btn btn-primary" style="margin-right:5px">My profile</button>
+        <a class="btn btn-primary" href="{{route('tutor.profile')}}" style="margin-right:5px">My profile</a>
             
             <a class="btn btn-primary" href="{{route('tution.post')}}" style="margin-right:5px">Tution Post</a>
             
-            <a class="btn btn-primary" href="{{route('tution.list')}}" style="margin-right:5px">Tution List</a>
+            <a class="btn btn-primary" href="{{route('tutor.tutionlist')}}" style="margin-right:5px">My Tution List</a>
             <button type="button" class="btn btn-primary" style="margin-right:5px>tution post</button>
 
 
@@ -63,10 +63,12 @@
 
                 @auth
         @if(auth()->user()->role=='student')
+        <a class="btn btn-primary" href="{{route('student.profile')}}" style="margin-right:5px">My profile</a>
             
         <button type="button" class="btn btn-primary" style="margin-right:5px">Tutor list</button>
-            <button type="button" class="btn btn-primary" style="margin-right:5px">Create Tution</button>
+            
             <a class="btn btn-primary" href="#tution-section" style="margin-right:5px">Tution Post</a>
+            <a class="btn btn-primary" href="{{route('mytution')}}" style="margin-right:5px">My Tution</a>
 
      <img style="    width: 70px; border-radius: 50px; padding: 10px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="user image">
             <a href="{{route('logout')}}" class="btn btn-primary">
@@ -157,8 +159,8 @@
          </div>
 
         <div class="form-group">
-            <label for="file">Upload User Image:</label>
-            <input name="image" type="file" class="form-control" id="file" required>
+            <label for="image">Upload User Image:</label>
+            <input name="image" type="file" class="form-control" id="image" required>
         </div>
 
         <div class="form-group">
@@ -207,8 +209,8 @@
          </div>
 
         <div class="form-group">
-            <label for="file">Upload User Image:</label>
-            <input name="image" type="file" class="form-control" id="file" required>
+            <label for="image">Upload User Image:</label>
+            <input name="image" type="file" class="form-control" id="image" required>
         </div>
 
         <div class="form-group">

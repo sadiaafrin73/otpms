@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Tution;
 use App\Models\User;
+use App\Models\Tutionlist;
 use Illuminate\Http\Request;
 
 class TutionController extends Controller
@@ -32,5 +33,20 @@ class TutionController extends Controller
     }
 
        return redirect()->back();
+     
     }
+    public function show_tutionlist()
+    {
+        $list=Tutionlist::with('hastutor','studentR','hassubject')->paginate(5);
+        return view('backend.partials.tutionlist',compact('list'));
+    }
+    public function view_tutionlist($t_id)
+    {
+        $viewlist=Tutionlist::with('hastutor','studentR','hassubject')->find($t_id);;
+       
+        return view('backend.partials.view_tutionlist',compact('viewlist'));
+    }
+   
+   
 }
+

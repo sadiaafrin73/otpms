@@ -83,7 +83,13 @@ class TutorController extends Controller
         dd( Auth::logout());
         return redirect(route('homef'));
 
-
-
     }
+    public function myprofile()
+
+    {
+        $tutor=Tutor::where('user_id','=', auth()->user()->id)->first();
+       
+        return view('frontend.partials.tutor_my_profile',compact('tutor'));
+    }
+
 }

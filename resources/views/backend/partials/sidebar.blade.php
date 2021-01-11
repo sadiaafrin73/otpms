@@ -85,7 +85,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{route('dashboard.tution_post_request')}}">Tution Post Request </a>
         
-            <a class="collapse-item" href="#">Tution List</a>
+            <a class="collapse-item" href="{{route('show.tutionlist')}}">Tution List</a>
            
         </div>
     </div>

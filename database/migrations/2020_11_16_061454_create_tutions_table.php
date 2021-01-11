@@ -16,6 +16,7 @@ class CreateTutionsTable extends Migration
         Schema::create('tutions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tutor_id');
+        
             $table->string('name_id');
             $table->string('group_id');
             $table->string('classnumber_id');

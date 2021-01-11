@@ -27,8 +27,8 @@ class Tution extends Model
 
  public function tutor(){
 
-
     return $this->belongsTo(User::class,'tutor_id','id');
  }
+
  
 }

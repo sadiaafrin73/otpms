@@ -12,4 +12,9 @@ protected $table='students';
 
     protected $guarded =[];
     use HasFactory;
+    
+    public function studentR()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    } 
 }

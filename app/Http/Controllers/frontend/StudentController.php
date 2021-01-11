@@ -24,9 +24,22 @@ class StudentController extends Controller
             'gender'=>'required'            
             
          ]);
-  
-  
+ 
+         $file_name='';
+
+        //        step1- check has file
+                    if($request->hasFile('image'))
+                    {
+                        $image=$request->file('image');
+                       //step2- generate unique name
+                        $file_name=date('Ymdhms').'.'.$image->getClientOriginalExtension();
+                       //step 3- store file with name
+                        $image->storeAs('student_tutor_picture',$file_name);
+        
+                    }
+
           User::create([
+
              
               'name'=>$request->name,
               'email'=>$request->email,
@@ -34,6 +47,7 @@ class StudentController extends Controller
               'address'=>$request->address,
               'mobile_number'=>$request->mobile_number,
               'gender'=>$request->gender,
+              'image'=> $file_name,
               'role'=>'student'
               
           ]);
@@ -55,7 +69,7 @@ class StudentController extends Controller
 
     public function login()
     {
-        return view('frontend.partials.student_login');
+        return view('frontend.partials.student');
     }
     public function login_submit(Request $request)
     {
@@ -77,7 +91,11 @@ class StudentController extends Controller
         return redirect()->back()->withErrors('Invalid Credentials');
     }
     
-
-
     }
+    public function my_profile()
+    {
+        
+        return view('frontend.partials.student_my_profile');
+    }
+
 }

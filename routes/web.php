@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 //backend
 //dashboard
 Route::group(['prefix'=>'home','middleware'=>['auth','checkAdmin']],function(){
@@ -29,14 +26,16 @@ Route::group(['prefix'=>'home','middleware'=>['auth','checkAdmin']],function(){
     //Tution post request
     Route::get('/tution_post_request','backend\TutionController@tution_post_request')->name('dashboard.tution_post_request');
     Route::get('/tution_post_request/approved/{id}','backend\TutionController@tution_approved')->name('tution_post_request.approved');
-    
     Route::get('/tutor/tutor_request','backend\TutorController@tutor_request')->name('dashboard.tutor.tutor_request');
+    //show tution list
+    Route::get('/show_tutionlist','backend\TutionController@show_tutionlist')->name('show.tutionlist');
+    Route::get('/show_tutionlist/view/{id}','backend\TutionController@view_tutionlist')->name('view.tutionlist');
+   
     //Route::get('/tutor/tutor_request','frontend\TutorController@tutor_requestshow')->name('dashboard.tutor.tutor_request');
     
 
     Route::get('/tutor/tutor_list','backend\TutorController@tutor_list')->name('dashboard.tutor.tutor_list');
-    //student
-    //Route::get('/student/list','backend\StudentController@list')->name('student.list');
+   
 
     //subject
     Route::get('/subject/addsubject','backend\SubjectController@subject')->name('dashboard.subject.addsubject');
@@ -79,6 +78,17 @@ Route::post('/homef/student/login/submit','frontend\StudentController@login_subm
 Route::get('/homef/tution_post','frontend\TutionController@tution_post')->name('tution.post');
 Route::post('/homef/tution_post/submit','frontend\TutionController@tution_post_submit')->name('tution.post.submit');
 Route::get('/homef/tution_post/details/{id}','frontend\TutionController@tutionpost_details')->name('tution.post.details');
-//Route::get('/homef/tution_post/add','frontend\TutionController@addtution')->name('tution.add');
+
 //tution list
 Route::get('/homef/tutionlist','frontend\TutionController@showtutionlist')->name('tution.list');
+//my tution//student
+Route::get('/homef/my_tution/users','frontend\TutionController@mytution')->name('mytution');
+//my tutionlist//tutor
+Route::get('/homef/tutor/tutionlist','frontend\TutionController@my_tution')->name('tutor.tutionlist');
+
+
+
+//student_ my profile
+Route::get('/homef/student/my_profile','frontend\StudentController@my_profile')->name('student.profile');
+//tutor_ my profile
+Route::get('/homef/tutor/my_profile','frontend\TutorController@myprofile')->name('tutor.profile');

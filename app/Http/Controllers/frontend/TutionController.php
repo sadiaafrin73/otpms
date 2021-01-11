@@ -5,9 +5,11 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tution;
+use App\Models\User;
 use App\Models\Subject;
 use App\Models\Group;
 use App\Models\Classnumber;
+use App\Models\Tutionlist;
 
 class TutionController extends Controller
 {
@@ -20,6 +22,8 @@ class TutionController extends Controller
     }
     public function tution_post_submit(Request $req)
     {
+
+       
         $req->validate([
             
             'name'=>'required',
@@ -33,10 +37,8 @@ class TutionController extends Controller
         ]);
    
     Tution::create([
-       
         'name_id'=>$req->input('name'),
         'tutor_id'=>auth()->user()->id,
-        'student_id'=>auth()->user()->id,
         'group_id'=>$req->input('group'),
         'classnumber_id'=>$req->input('class'),
         'schedule_day'=>$req->input('schedule_day'),
@@ -53,10 +55,36 @@ class TutionController extends Controller
         $tutiondetails=Tution::find($id);
         return view('frontend.partials.tutionpost_details',compact('tutiondetails'));
     }
-    public function showtutionlist()
+    public function showtutionlist(Request $req)
     {
+
+        $tution = Tution::find($req->post_id);
+
+        Tutionlist::updateOrcreate([
+            'tutor_id'=>$tution->tutor_id,
+            'student_id'=>auth()->user()->id,
+            'tution_id' => $tution->id
+        ]);
+
+        return redirect()->back()->with('message','Tution Enrollment Successful');
        
-        return view('frontend.partials.tutionlist');
+        
     }
-    
+    public function mytution()
+    {
+   
+       
+      $student=Tutionlist::where('student_id','=',auth()->user()->id)->with('hastutor','hassubject')->paginate(5);
+   
+        return view('frontend.partials.student_my_tution',compact('student'));
+    }
+    public function my_tution()
+    {
+   
+       
+     
+        $tutionlist=Tutionlist::where('tutor_id','=',auth()->user()->id)->with('studentR','hassubject')->paginate(5);
+        return view('frontend.partials.tutor_my_tution',compact('tutionlist'));
+    }
+   
 }

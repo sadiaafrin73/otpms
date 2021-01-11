@@ -7,19 +7,19 @@
 
     <div class="form-group">
     <p>
-        <label for="">Tutor Name:</label>{{$tutiondetails->tutor_id}}
+        <label for="">Tutor Name:</label>{{$tutiondetails->tutor->name}}
         </p>
 
         <p>
-        <label for="">Subject Name:</label>{{$tutiondetails->subjectname->id}}
+        <label for="">Subject Name:</label>{{$tutiondetails->subjectname->name}}
         </p>
 
         <p>
-        <label for="">Group:</label> {{$tutiondetails->group_id}}
+        <label for="">Group:</label> {{$tutiondetails->groupname->group}}
         </p>
 
         <p>
-        <label for="">Class:</label> {{$tutiondetails->classnumber_id}}
+        <label for="">Class:</label> {{$tutiondetails->hasclass->class}}
         </p>
 
         <p>
@@ -36,7 +36,7 @@
         </p>
       
         <p> 
-        <a class="btn btn-success" href="">Add</a>
+        <a class="btn btn-success" href="{{route('tution.list',['post_id'=>$tutiondetails->id])}}">Add</a>
         </p>
 
 
