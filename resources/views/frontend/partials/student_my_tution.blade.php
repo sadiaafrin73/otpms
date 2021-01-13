@@ -32,7 +32,7 @@
                 
                 <td>
                 <a class="btn btn-info" href="{{route('mytution.view',$data->id)}}">View</a> 
-                <a class="btn btn-danger" href="{{route('mytution.delete',$data->id)}}">Delete</a> 
+                
                 </td>
                
               

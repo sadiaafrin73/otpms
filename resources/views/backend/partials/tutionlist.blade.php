@@ -2,7 +2,7 @@
 @extends('backend.master')
 @section('main')
 
-<h1>My Tution </h1>
+<h1>Tution List</h1>
 
 <table class="table">
         <thead>

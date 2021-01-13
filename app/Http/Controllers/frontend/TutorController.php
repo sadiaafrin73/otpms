@@ -74,6 +74,7 @@ class TutorController extends Controller
     }
     
     
+   
   
     }
     public function tutorlogout()
@@ -91,5 +92,6 @@ class TutorController extends Controller
        
         return view('frontend.partials.tutor_my_profile',compact('tutor'));
     }
+   
 
 }

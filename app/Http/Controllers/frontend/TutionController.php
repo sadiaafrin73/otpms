@@ -105,18 +105,6 @@ class TutionController extends Controller
         $tutionview=Tution::with('tutor','subjectname')->find($id);;
         return view('frontend.partials.view_student_my_tution',compact('tutionview'));
     }
-    public function deletemytution_s($id)
-    {
-       $deletetution=Tutionlist::find($id);
-       if(!empty($deletetution))
-       {
-        $deletetution->delete();
-           $message="Tution deleted Successfully";
-       }else{
-           $message="No data found.";
-       }
-        return redirect()->back()->with('message',$message);
-    } 
-     
+   
 }
 

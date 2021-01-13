@@ -23,12 +23,14 @@ Route::group(['prefix'=>'home','middleware'=>['auth','checkAdmin']],function(){
     Route::get('/student','backend\StudentController@student')->name('dashboard.student');
     Route::get('/student','frontend\StudentController@studentlist')->name('dashboard.student');
     Route::get('/report','backend\ReportController@report')->name('dashboard.report');
+    Route::post('/date/submit','backend\ReportController@date_submit')->name('dashboard.date.submit');
     
     Route::get('/business_setup','backend\Business_setupController@business_setup')->name('dashboard.business_setup');
     //Tution post request
     Route::get('/tution_post_request','backend\TutionController@tution_post_request')->name('dashboard.tution_post_request');
     Route::get('/tution_post_request/approved/{id}','backend\TutionController@tution_approved')->name('tution_post_request.approved');
     Route::get('/tutor/tutor_request','backend\TutorController@tutor_request')->name('dashboard.tutor.tutor_request');
+    
     //show tution list
     Route::get('/show_tutionlist','backend\TutionController@show_tutionlist')->name('show.tutionlist');
     Route::get('/show_tutionlist/view/{id}','backend\TutionController@view_tutionlist')->name('view.tutionlist');
@@ -112,7 +114,7 @@ Route::group(['middleware'=>['checkStudentdashboard']],function(){
 //my tution//student
 Route::get('/homef/my_tution/users','frontend\TutionController@mytution')->name('mytution');
 Route::get('/homef/my_tution/view/{id}','frontend\TutionController@viewmytution_s')->name('mytution.view');
-Route::get('/homef/my_tution/delete/{id}','frontend\TutionController@deletemytution_s')->name('mytution.delete');
+//Route::get('/homef/my_tution/delete/{id}','frontend\TutionController@deletemytution_s')->name('mytution.delete');
 
 //student_ my profile
 Route::get('/homef/student/my_profile','frontend\StudentController@my_profile')->name('student.profile');

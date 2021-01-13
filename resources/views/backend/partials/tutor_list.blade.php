@@ -15,6 +15,26 @@
 
   </thead>
 
- 
+  <tbody>
+  @foreach($tutor as $data)
+            <tr>
+                <th scope="row">{{$data->id}}</th>
+                <td>{{$data->name}}</td>
+                <td>{{$data->email}}</td>
+                <td>{{$data->address}}</td>
+                <td>{{$data->mobile_number}}</td>
+                <td>{{$data->gender}}</td>
+                <td>{{$data->image}}</td>
+               
+                <td>
+                    <a class="btn btn-warning" href="">view</a>
+                   
+                 
+                </td>
+              
+            </tr>
+        @endforeach
+    
+  </tbody>
 </table>
 @stop
