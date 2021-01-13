@@ -13,7 +13,7 @@
               <li class="active"><a href="index.html">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
-              <li><a href="#services">Services</a></li>
+              <li><a href="#services">Tution Post</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#pricing">Pricing</a></li>
               <li class="drop-down"><a href="">Log In</a>
@@ -46,6 +46,7 @@
             
             
         <a class="btn btn-primary" href="{{route('tutor.profile')}}" style="margin-right:5px">My profile</a>
+        <a class="btn btn-primary" href="{{route('tutor.tutionpost')}}" style="margin-right:5px">My Tution Post </a>
             
             <a class="btn btn-primary" href="{{route('tution.post')}}" style="margin-right:5px">Tution Post</a>
             

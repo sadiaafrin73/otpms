@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tution;
+use App\Models\Tutor;
 use App\Models\User;
 use App\Models\Tutionlist;
 use Illuminate\Http\Request;

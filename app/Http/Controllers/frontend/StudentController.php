@@ -73,8 +73,7 @@ class StudentController extends Controller
     }
     public function login_submit(Request $request)
     {
-        $request->validate([
-            
+        $request->validate([   
             'email'=>'required|email',
             'password'=>'required'     
         ]);

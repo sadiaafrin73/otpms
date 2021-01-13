@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckAdmin
+class StudentDashboard
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,11 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-
-        if(auth()->user()->role=='admin')
-        {
-            return $next($request);
+        if(auth()->check() && auth()->user()->role =='student'){
+            return $next($request); 
         }
-        return redirect()->back()->withErrors('You are not admin.');
+       
+        return redirect()->route('student.login')->withErrors('You are not Student.');
+        
     }
 }

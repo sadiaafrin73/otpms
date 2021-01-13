@@ -52,7 +52,10 @@ class TutionController extends Controller
     }
     public function tutionpost_details($id)
     {
-        $tutiondetails=Tution::find($id);
+        $tutiondetails=Tution::with('tutor.tutorR')->find($id);
+
+       
+
         return view('frontend.partials.tutionpost_details',compact('tutiondetails'));
     }
     public function showtutionlist(Request $req)
@@ -73,7 +76,6 @@ class TutionController extends Controller
     public function mytution()
     {
    
-       
       $student=Tutionlist::where('student_id','=',auth()->user()->id)->with('hastutor','hassubject')->paginate(5);
    
         return view('frontend.partials.student_my_tution',compact('student'));
@@ -82,9 +84,39 @@ class TutionController extends Controller
     {
    
        
-     
         $tutionlist=Tutionlist::where('tutor_id','=',auth()->user()->id)->with('studentR','hassubject')->paginate(5);
+      
         return view('frontend.partials.tutor_my_tution',compact('tutionlist'));
     }
+    public function my_tution_post()
+    {
    
+        $post=Tution::where('is_approved','=','approved')->where('tutor_id','=',auth()->user()->id)->get();
+        
+        return view('frontend.partials.my_tution_post',compact('post'));
+    }
+    public function view_my_tution($t_id)
+    {
+        $view=Tution::with('tutor','subjectname')->find($t_id);;
+        return view('frontend.partials.view_my_tution_post',compact('view'));
+    }
+    public function viewmytution_s($id)
+    {
+        $tutionview=Tution::with('tutor','subjectname')->find($id);;
+        return view('frontend.partials.view_student_my_tution',compact('tutionview'));
+    }
+    public function deletemytution_s($id)
+    {
+       $deletetution=Tutionlist::find($id);
+       if(!empty($deletetution))
+       {
+        $deletetution->delete();
+           $message="Tution deleted Successfully";
+       }else{
+           $message="No data found.";
+       }
+        return redirect()->back()->with('message',$message);
+    } 
+     
 }
+

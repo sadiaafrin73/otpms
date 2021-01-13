@@ -23,7 +23,6 @@ class UserController extends Controller
 
             // dd(Auth::attempt($login_info));
             if (Auth::attempt($login_info)) {
-                $request->session()->regenerate();
                 return redirect()->intended('home');
             }
             else

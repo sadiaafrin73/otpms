@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //backend
 //dashboard
+
+
 Route::group(['prefix'=>'home','middleware'=>['auth','checkAdmin']],function(){
 //home
     Route::get('/','backend\HomeController@index')->name('dashboard.admin');
@@ -57,6 +59,7 @@ Route::group(['prefix'=>'home','middleware'=>['auth','checkAdmin']],function(){
     Route::put('/subject/update/{id}','backend\SubjectController@updatesubject')->name('subject.update');
 //
 
+
 });
 
 //user
@@ -69,26 +72,55 @@ Route::get('/homef','frontend\HomeController@homeindex')->name('dashboard');
 Route::post('/homef/student/registration','frontend\StudentController@registration')->name('student.registration');
 Route::post('/homef/tutor/registration','frontend\TutorController@registration')->name('tutor.registration');
 //login,logout
+
+Route::get('/homef/student/login','frontend\StudentController@login')->name('student.login');
+Route::post('/homef/student/login/submit','frontend\StudentController@login_submit')->name('student.submit');  
+
+
 Route::get('/homef/tutor/login','frontend\TutorController@tutorlogin')->name('tutor.login');
 Route::post('/homef/tutor/login/submit','frontend\TutorController@login_submit')->name('tutor.submit');
+
+Route::group(['middleware'=>['checkTutor']],function(){
+
 Route::get('homef/tutor/logout','frontend\TutorController@tutorlogout')->name('tutor.logout');
-Route::get('/homef/student/login','frontend\StudentController@login')->name('student.login');
-Route::post('/homef/student/login/submit','frontend\StudentController@login_submit')->name('student.submit');
+
 //tution post
 Route::get('/homef/tution_post','frontend\TutionController@tution_post')->name('tution.post');
 Route::post('/homef/tution_post/submit','frontend\TutionController@tution_post_submit')->name('tution.post.submit');
-Route::get('/homef/tution_post/details/{id}','frontend\TutionController@tutionpost_details')->name('tution.post.details');
+//my tutionpost//tutor
+Route::get('/homef/tutor/tutionpost','frontend\TutionController@my_tution_post')->name('tutor.tutionpost');
+Route::get('/homef/tutor/tutionpost/view/{id}','frontend\TutionController@view_my_tution')->name('tutor.tutionpost.view');
 
-//tution list
-Route::get('/homef/tutionlist','frontend\TutionController@showtutionlist')->name('tution.list');
-//my tution//student
-Route::get('/homef/my_tution/users','frontend\TutionController@mytution')->name('mytution');
+
 //my tutionlist//tutor
 Route::get('/homef/tutor/tutionlist','frontend\TutionController@my_tution')->name('tutor.tutionlist');
 
+//tutor_ my profile
+Route::get('/homef/tutor/my_profile','frontend\TutorController@myprofile')->name('tutor.profile');
 
+
+});
+
+
+//tution list
+Route::get('/homef/tutionlist','frontend\TutionController@showtutionlist')->name('tution.list')->middleware('checkStudent');
+
+Route::get('/homef/tution_post/details/{id}','frontend\TutionController@tutionpost_details')->name('tution.post.details');
+
+
+Route::group(['middleware'=>['checkStudentdashboard']],function(){
+//my tution//student
+Route::get('/homef/my_tution/users','frontend\TutionController@mytution')->name('mytution');
+Route::get('/homef/my_tution/view/{id}','frontend\TutionController@viewmytution_s')->name('mytution.view');
+Route::get('/homef/my_tution/delete/{id}','frontend\TutionController@deletemytution_s')->name('mytution.delete');
 
 //student_ my profile
 Route::get('/homef/student/my_profile','frontend\StudentController@my_profile')->name('student.profile');
-//tutor_ my profile
-Route::get('/homef/tutor/my_profile','frontend\TutorController@myprofile')->name('tutor.profile');
+
+});
+
+
+
+
+
+
