@@ -29,8 +29,8 @@
                
                 <td>
                     <a class="btn btn-warning" href="">view</a>
-                    <a class="btn btn-warning" href="">Edit</a>
-                    <a class="btn btn-danger" href="">Delete</a>
+                 
+                    <a class="btn btn-danger" href="{{route('dashboard.student.delete',$data->id)}}">Delete</a>
                  
                 </td>
               

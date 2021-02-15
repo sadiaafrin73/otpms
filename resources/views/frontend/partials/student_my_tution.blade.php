@@ -1,7 +1,7 @@
 
 @extends('frontend.master')
 @section('main')
-
+<div style="padding:100px 0">
 <h1>My Tution </h1>
 
 <table class="table">
@@ -21,6 +21,7 @@
         </thead>
         <tbody>
         @foreach($student as $data)
+
             <tr>
             <th scope="row">{{$data->id}}</th>
                 <td>{{$data->hastutor->name}}</td>
@@ -31,7 +32,7 @@
                
                 
                 <td>
-                <a class="btn btn-info" href="{{route('mytution.view',$data->id)}}">View</a> 
+                <a class="btn btn-info" href="{{route('mytution.view',$data->tution_id)}}">View</a> 
                 
                 </td>
                

@@ -4,12 +4,14 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">id</th>
       <th scope="col">name</th>
       <th scope="col">email</th>
-      <th scope="col">password</th>
+      <th scope="col">Address</th>
+      <th scope="col">Gender</th>
+      
       <th scope="col">mobile_no</th>
-      <th scope="col">gender</th>
+
+      <th scope="col">Action</th>
       
     </tr>
 
@@ -22,12 +24,14 @@
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
                 <td>{{$data->address}}</td>
-                <td>{{$data->mobile_number}}</td>
                 <td>{{$data->gender}}</td>
-                <td>{{$data->image}}</td>
+                <td>{{$data->mobile_number}}</td>
+             
+               
                
                 <td>
-                    <a class="btn btn-warning" href="">view</a>
+                    <a class="btn btn-warning" href="{{route('dashboard.tutor.tutor_list.view',$data->id)}}">view</a>
+                    <a class="btn btn-danger" href="{{route('dashboard.tutor.tutor_list.delete',$data->id)}}">delete</a>
                    
                  
                 </td>

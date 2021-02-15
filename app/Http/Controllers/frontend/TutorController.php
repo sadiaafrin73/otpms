@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tutor;
+use App\Models\Tutor_Qualification;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -19,11 +20,24 @@ class TutorController extends Controller
             'email'=>'required|email|unique:users',
             'password'=>'required', 
             'address'=>'required',
-            'mobile_number'=>'required',
+            'mobile_number'=>'required|regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/',
             'gender'=>'required',
             'educational_qualification'=>'required'
          ]);
   
+
+         $file_name='';
+
+         //        step1- check has file
+                     if($request->hasFile('image'))
+                     {
+                         $image=$request->file('image');
+                        //step2- generate unique name
+                         $file_name=date('Ymdhms').'.'.$image->getClientOriginalExtension();
+                        //step 3- store file with name
+                         $image->storeAs('student_tutor_picture',$file_name);
+         
+                     }
 
          $user = User::create([
             'name'=>$request->name,
@@ -32,8 +46,11 @@ class TutorController extends Controller
             'address'=>$request->address,
             'mobile_number'=>$request->mobile_number,
             'gender'=>$request->gender,
+            'image'=> $file_name,
             'role'=>'tutor'
          ]);
+
+     
   
          Tutor::create([  
              'user_id'=>$user->id,
@@ -81,7 +98,7 @@ class TutorController extends Controller
     {
         //logout here
         Auth::logout();
-        dd( Auth::logout());
+      
         return redirect(route('homef'));
 
     }
@@ -89,9 +106,40 @@ class TutorController extends Controller
 
     {
         $tutor=Tutor::where('user_id','=', auth()->user()->id)->first();
+
+        $qualifications =auth()->user()->qualifications()->get();
+
+     
        
-        return view('frontend.partials.tutor_my_profile',compact('tutor'));
+        return view('frontend.partials.tutor_my_profile',compact('tutor','qualifications'));
     }
-   
+    public function my_qualification(Request $request)
+    {
+        $request->validate([
+            'examination'=>'required',
+            'group_subject'=>'required',
+            'institution'=>'required',
+            'result'=>'required'
+           
+         ]);
+  
+
+        
+  
+         Tutor_Qualification::create([  
+             
+              'examination'=>$request->examination,
+              'group_subject'=>$request->group_subject,
+              'institution'=>$request->institution,
+              'result'=>$request->result,
+              'user_id'=>auth()->user()->id
+          ]);
+  
+
+
+          return back();
+         
+  
+    }
 
 }

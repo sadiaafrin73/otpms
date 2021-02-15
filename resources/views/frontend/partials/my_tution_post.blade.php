@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('main')
-
+<div style="padding:100px 0">
 <h1>Tution Post</h1>
 
 <table class="table">

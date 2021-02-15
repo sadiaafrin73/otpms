@@ -7,8 +7,5 @@ use Illuminate\Http\Request;
 
 class Business_setupController extends Controller
 {
-    public function business_setup()
-    {
-        return view('backend.partials.business_setup');
-    }
+
 }

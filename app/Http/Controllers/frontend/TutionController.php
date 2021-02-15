@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tution;
+use App\Models\Tutor_Qualification;
 use App\Models\User;
 use App\Models\Subject;
 use App\Models\Group;
@@ -32,6 +33,7 @@ class TutionController extends Controller
             'schedule_day'=>'required',
             'schedule_time'=>'required',
             'address'=>'required',
+            'tution_duration'=>'required',
             'tution_fee'=>'required'
 
         ]);
@@ -44,6 +46,7 @@ class TutionController extends Controller
         'schedule_day'=>$req->input('schedule_day'),
         'schedule_time'=>$req->input('schedule_time'),
         'address'=>$req->input('address'),
+        'tution_duration'=>$req->input('tution_duration'),
         'tution_fee'=>$req->input('tution_fee')
     ]);
    return redirect()->back();
@@ -52,9 +55,9 @@ class TutionController extends Controller
     }
     public function tutionpost_details($id)
     {
-        $tutiondetails=Tution::with('tutor.tutorR')->find($id);
-
-       
+    
+        $tutiondetails=Tution::with('tutor.tutorR','tutor.qualifications','tutor.tutorR.comments')->find($id);
+      
 
         return view('frontend.partials.tutionpost_details',compact('tutiondetails'));
     }
@@ -102,7 +105,9 @@ class TutionController extends Controller
     }
     public function viewmytution_s($id)
     {
-        $tutionview=Tution::with('tutor','subjectname')->find($id);;
+     
+        $tutionview=Tution::with('tutor','subjectname','tutor.tutorR.comments','groupname','hasclass')->find($id);
+     
         return view('frontend.partials.view_student_my_tution',compact('tutionview'));
     }
    

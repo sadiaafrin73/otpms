@@ -1,8 +1,12 @@
 @extends('frontend.master')
 @section('main')
+<div style="padding:100px 0">
+<div>
 
-<h1>Tution list</h1>
-
+    <h1>Tution list</h1>
+</div>
+<div>
+    
 <table class="table">
         <thead>
         <tr>
@@ -45,6 +49,10 @@
        
         
     </table>
+</div>
+
+
+
     <div>
     {{$tutionlist->links()}}
     </div>

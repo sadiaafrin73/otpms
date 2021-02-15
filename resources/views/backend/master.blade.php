@@ -86,6 +86,21 @@
     <script src="{{('/backend/assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{('/backend/assets/js/demo/chart-pie-demo.js')}}"></script>
 
+    
+    <script>
+		function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+
+			document.body.innerHTML = printContents;
+
+			window.print();
+
+			document.body.innerHTML = originalContents;
+
+		}
+	</script>
+
 </body>
 
 </html>

@@ -4,12 +4,12 @@
 
 <h1>Report</h1>
 <div style="margin:20px;float:right">
-<a style="float: right" type="submit" onclick="window.print()" class="btn btn-primary" href="#"> Print</a>
+<a style="float: right"  class="btn btn-primary" href="{{route('dashboard.report.print')}}"> Print</a>
 </div>
 
-                   
-<table class="table">
-<form  action="{{ route('dashboard.date.submit') }}" method="post">
+    <div>
+
+    <form  action="{{ route('dashboard.date.submit') }}" method="post">
                         @csrf
                         <div class="form-group">
                         <label for="date">Date From:</label>
@@ -19,9 +19,19 @@
                         <label for="date1">Date To:</label>
                         <input name="date1"type="date" value="" class="align:right" id="date1" >
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    
                  </form>
+                 <div>
+                 <div style="margin:20px;float:left">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+
+
+
+    </div>               
+<table class="table" id="printMe" style="border:1px solid red;">
+
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -65,4 +75,4 @@
        
         </table>
         {{$list->links()}}
-        @stop
+ @stop

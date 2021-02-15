@@ -32,9 +32,7 @@
                 <td>{{$data->address}}</td>
                 <td>{{$data->tution_fee}}</td>
                 <td>
-                    <a class="btn btn-warning" href="#">Edit</a>
-                    <a class="btn btn-danger" href="#">Delete</a>
-                    <a class="btn btn-info" href="#">View</a>
+                  
 
                     @if($data->is_approved == null)
                     <a class="btn btn-info" href="{{route('tution_post_request.approved',$data->id)}}">not approved</a>

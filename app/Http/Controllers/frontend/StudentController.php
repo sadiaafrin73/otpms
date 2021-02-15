@@ -20,7 +20,7 @@ class StudentController extends Controller
             'email'=>'required|email|unique:users',
             'password'=>'required',
             'address'=>'required',
-            'mobile_number'=>'required',
+            'mobile_number'=>'required|regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/',
             'gender'=>'required'            
             
          ]);
@@ -96,6 +96,18 @@ class StudentController extends Controller
     {
         
         return view('frontend.partials.student_my_profile');
+    }
+    public function delete_student($id)
+    {
+       $student=User::find($id);
+       if(!empty($student))
+       {
+        $student->delete();
+           $message="student deleted Successfully";
+       }else{
+           $message="No data found.";
+       }
+        return redirect()->back()->with('message',$message);
     }
 
 }

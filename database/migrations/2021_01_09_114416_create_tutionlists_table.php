@@ -15,8 +15,10 @@ class CreateTutionlistsTable extends Migration
     {
         Schema::create('tutionlists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tutor_id');
-            $table->foreignId('student_id');
+            $table->foreignId('tutor_id')->constrained('users')->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('users')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->foreignId('tution_id');
             $table->timestamps();
         });

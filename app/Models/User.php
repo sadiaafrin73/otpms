@@ -43,5 +43,13 @@ class User extends Authenticatable
 
         return $this->hasone(Tutor::class,'user_id','id');
      }
+
+     
+
+
+      public function qualifications()
+     {
+       return $this->hasMany(Tutor_Qualification::class,'user_id','id');
+     }
      
 }

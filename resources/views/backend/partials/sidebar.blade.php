@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3"> Admin <sup>2</sup></div>
 </a>
 
 <!-- Divider -->
@@ -35,7 +35,7 @@
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{route('dashboard.tutor.tutor_request')}}">Tutor Request</a>
+           
             <a class="collapse-item" href="{{route('dashboard.tutor.tutor_list')}}">Tutor List</a>
         </div>
     </div>
@@ -93,26 +93,17 @@
 
 
 
-<!-- Nav Item - Schedule -->
-<li class="nav-item">
-    <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Schedule</span></a>
-</li>
+
 <!-- Nav Item - Report -->
 <li class="nav-item">
     <a class="nav-link" href="{{route('dashboard.report')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Report</span></a>
 </li>
-<!-- Nav Item -Business Setup -->
-<li class="nav-item">
-    <a class="nav-link" href="{{route('dashboard.business_setup')}}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Business Setup</span></a>
+
 </li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
-,
+
 </ul>

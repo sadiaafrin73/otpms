@@ -17,4 +17,11 @@ class Tutor extends Model
  {
      return $this->belongsTo(User::class);
  } 
+
+
+public function comments()
+{
+    return $this->hasMany(Comments::class,'tutor_id','id');
+}
+ 
 }

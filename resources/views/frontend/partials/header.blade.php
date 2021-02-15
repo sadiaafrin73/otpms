@@ -1,21 +1,21 @@
-<header id="header" class="fixed-top ">
+<header id="header" class="fixed-top " style="background: rgba(40, 40, 40, 0.9);">
     <div class="container-fluid">
 
       <div class="row justify-content-center">
         <div class="col-xl-9 d-flex align-items-center justify-content-between">
-          <h1 class="logo"><a href="index.html">OTPMS</a></h1>
+          <h1 class="logo"><a href="">TuitionHub</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
           <nav class="nav-menu d-none d-lg-block">
           @guest
             <ul>
-              <li class="active"><a href="index.html">Home</a></li>
+              <li class="active"><a href="">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="#services">Tution Post</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#pricing">Pricing</a></li>
+             
+          
               <li class="drop-down"><a href="">Log In</a>
                 <ul>
                  <li><a href="{{route('dashboard.admin')}}">Admin</a></li>
@@ -48,17 +48,19 @@
         <a class="btn btn-primary" href="{{route('tutor.profile')}}" style="margin-right:5px">My profile</a>
         <a class="btn btn-primary" href="{{route('tutor.tutionpost')}}" style="margin-right:5px">My Tution Post </a>
             
-            <a class="btn btn-primary" href="{{route('tution.post')}}" style="margin-right:5px">Tution Post</a>
+            <a class="btn btn-primary" href="{{route('tution.post')}}" style="margin-right:5px">Create Tution Post</a>
             
             <a class="btn btn-primary" href="{{route('tutor.tutionlist')}}" style="margin-right:5px">My Tution List</a>
-            <button type="button" class="btn btn-primary" style="margin-right:5px>tution post</button>
-
-
-<img style="    width: 70px; border-radius: 50px; padding: 10px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="user image">
             <a href="{{route('logout')}}" class="btn btn-primary">
                 Logout
             </a>
 
+         
+
+            <img  style="object-fit:cover;object-fit: cover;width:65px; height:65px; border-radius:100%;margin-left:43px;
+     
+     object-position: center;" src="{{url('/uploads/student_tutor_picture/'.auth()->user()->image)}}" alt="user image">
+           
                 @endif
                 @endauth
 
@@ -66,16 +68,19 @@
         @if(auth()->user()->role=='student')
         <a class="btn btn-primary" href="{{route('student.profile')}}" style="margin-right:5px">My profile</a>
             
-        <button type="button" class="btn btn-primary" style="margin-right:5px">Tutor list</button>
+  
             
             <a class="btn btn-primary" href="#tution-section" style="margin-right:5px">Tution Post</a>
             <a class="btn btn-primary" href="{{route('mytution')}}" style="margin-right:5px">My Tution</a>
-
-     <img style="    width: 70px; border-radius: 50px; padding: 10px;" src="{{url('/uploads/users/'.auth()->user()->image)}}" alt="user image">
             <a href="{{route('logout')}}" class="btn btn-primary">
                 Logout
             </a>
 
+
+            <img  style="object-fit:cover;object-fit: cover;width:65px; height:65px; border-radius:100%;margin-left:43px;
+     
+    object-position: center;" src="{{url('/uploads/student_tutor_picture/'.auth()->user()->image)}}" alt="user image">
+            
                 @endif
                 @endauth
 
@@ -159,7 +164,7 @@
             <input name="experience" type="text" class="form-control" id="experience" placeholder="Enter your working experience">
          </div>
 
-        <div class="form-group">
+         <div class="form-group">
             <label for="image">Upload User Image:</label>
             <input name="image" type="file" class="form-control" id="image" required>
         </div>

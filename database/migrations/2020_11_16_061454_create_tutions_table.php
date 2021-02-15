@@ -15,15 +15,19 @@ class CreateTutionsTable extends Migration
     {
         Schema::create('tutions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tutor_id');
+            $table->foreignId('tutor_id')->constrained('users')->onUpdate('cascade')
+            ->onDelete('cascade');
         
             $table->string('name_id');
             $table->string('group_id');
             $table->string('classnumber_id');
+            $table->string('comments_id')->nullable();
             $table->string('schedule_day');
             $table->string('schedule_time');
             $table->string('address');
+            $table->string('tution_duration');
             $table->string('tution_fee');
+
             $table->string('is_approved')->nullable();
             $table->timestamps();
         });

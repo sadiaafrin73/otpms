@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>KnightOne Bootstrap Template - Index</title>
+  <title>TutionHub</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -23,7 +23,9 @@
   <link href="{{asset('/frontend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('/frontend/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
   <link href="{{asset('/frontend/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
+ <!-- @stack('css') -->
   <!-- Template Main CSS File -->
   <link href="{{asset('/frontend/assets/css/style.css')}}" rel="stylesheet">
 
@@ -41,33 +43,10 @@
   <!-- ======= Header ======= -->
   @include('frontend.partials.header')
  <!-- End Header -->
-
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-8">
-        @if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
-
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-    @endforeach
-@endif
-          <h1>Online Tution Platform</h1>
-          <h2>Education is one thing no one can take away from you</h2>
-          
-        </div>
-      </div>
-    </div>
-  </section><!-- End Hero -->
- 
-
+<div class="wrap" style="margin-top:20px;"> 
   @yield('main')
   <!-- End #main -->
+</div>
 
   <!-- ======= Footer ======= -->
   @include('frontend.partials.footer')
@@ -90,6 +69,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('/frontend/assets/js/main.js')}}"></script>
+  <!-- @stack('js') -->
 
 </body>
 

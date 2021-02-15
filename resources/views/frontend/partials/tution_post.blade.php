@@ -4,6 +4,7 @@
 @if(session()->has('msg'))
    <p class= "alert alert-success">{{session()->get('msg')}}</p>
 @endif
+<div style="padding:100px 0">
 <h1>Add Tution Post </h1>
 
 <form  method="post" action="{{route('tution.post.submit')}}">
@@ -53,9 +54,13 @@
     <label for="address">Address</label>
     <input name="address"type="text" class="form-control" id="address" placeholder="Enter Address">
   </div>
+  <div class="form-group">
+    <label for="tution_duration">Tuition Duration</label>
+    <input name="tution_duration"type="text" class="form-control" id="tution_duration" placeholder="Enter tution duration">
+  </div>
 
   <div class="form-group">
-    <label for="tution_fee">Tution Fee</label>
+    <label for="tution_fee">Tuition Fee</label>
     <input name="tution_fee"type="text" class="form-control" id="tution_fee" placeholder="Enter Tution Fee">
   </div>
   

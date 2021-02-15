@@ -2,15 +2,6 @@
 @section('main')
     
      <h1>Add New Subject</h1>
-     @if(session()->has('message'))
-    <p class="alert alert-success">{{session()->get('message')}}</p>
-@endif
-
-@if($errors->any())
-    @foreach($errors->all() as $er)
-        <p class="alert alert-danger">{{$er}}</p>
-    @endforeach
-@endif
 
      <form action="{{route('subject.addsubject')}}" method="post"> 
      @csrf
@@ -41,5 +32,15 @@
   </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    @if(session()->has('message'))
+    <p class="alert alert-success">{{session()->get('message')}}</p>
+@endif
+
+@if($errors->any())
+    @foreach($errors->all() as $er)
+        <p class="alert alert-danger">{{$er}}</p>
+    @endforeach
+@endif
+
 
 @stop

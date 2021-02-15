@@ -23,12 +23,17 @@ class Tution extends Model
  {
      return $this->belongsTo(Classnumber::class,'classnumber_id','id');
  }
+ public function rcomments()
+ {
+     return $this->belongsTo(Comments::class,'comments_id','id');
+ }
 
 
     public function tutor(){
 
         return $this->belongsTo(User::class,'tutor_id','id');
     }
+   
  
 
 
